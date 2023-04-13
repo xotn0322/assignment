@@ -1,0 +1,6 @@
+배경 에셋
+https://assetstore.unity.com/packages/2d/environments/free-asset-2d-handcrafted-art-117049
+캐릭터 에셋
+https://assetstore.unity.com/packages/2d/characters/hero-knight-pixel-art-165188
+
+기본적으로 스페이스를 이용해서 플레이합니다

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/00.Workers/JinHyuck/01.Scenes/LoadScene.unity
+    guid: c12712d4445b7364e86c7fb66d1bab8c
+  - enabled: 1
     path: Assets/00.Workers/TaeSoo/Scenes/stage 1.unity
     guid: 4cec4bacc1af6254b924193427c5db58
   - enabled: 1
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Workers/TaeSoo/Scenes/stage 6.unity
     guid: 52ba082cebba7004ca8bb8c1269244a1
-  - enabled: 1
-    path: Assets/00.Workers/JinHyuck/01.Scenes/LoadScene.unity
-    guid: c12712d4445b7364e86c7fb66d1bab8c
   - enabled: 0
     path: Assets/00.Workers/JinHyuck/01.Scenes/Title.unity
     guid: d481d151b44f96e4f87bbc4c6153f749

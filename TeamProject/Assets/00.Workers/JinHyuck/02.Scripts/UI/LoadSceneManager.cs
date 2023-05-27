@@ -78,5 +78,6 @@ public class LoadSceneManager : MonoBehaviour
             yield return null;
 
         }
+
     }
 }

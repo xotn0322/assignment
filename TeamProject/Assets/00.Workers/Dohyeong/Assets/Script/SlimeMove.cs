@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class SlimeMove : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    Animator anim;
+    public Rigidbody2D rigid;
+    public Animator anim;
     SpriteRenderer spriteRenderer;
     public int moveDir;
     public float nextThinkTime;
 
+    
+
+    public bool performTerrainCheck = true;
 
     void Awake()
     {
@@ -33,25 +36,26 @@ public class SlimeMove : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        //지형 체크
-        //몬스터는 앞을 체크해야 
-        Vector2 frontVec = new Vector2(rigid.position.x + moveDir, rigid.position.y - 0.5f);
-        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
-        // 시작,방향 색깔
-
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
-
-        if (rayHit.collider == null)
+        // 지형 체크
+        if (performTerrainCheck)
         {
-            Debug.Log("경고! 이 앞 낭떨어지다!");
-            Turn();
+            Vector2 frontVec = new Vector2(rigid.position.x + moveDir, rigid.position.y - 0.5f);
+            Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
+
+            if (rayHit.collider == null)
+            {
+                Debug.Log("경고! 앞으로 낭떠러지가 있습니다!");
+                Turn();
+            }
+            anim.SetBool("Jump", false);
         }
     }
 
     IEnumerator monsterAI()
     {
         moveDir = Random.Range(-1, 2);
-        anim.SetInteger("WalkSpeed", moveDir);
         nextThinkTime = Random.Range(2f, 5f);
         yield return new WaitForSeconds(nextThinkTime);
         StartCoroutine("monsterAI");

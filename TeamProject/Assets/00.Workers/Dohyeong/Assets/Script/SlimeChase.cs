@@ -22,12 +22,10 @@ public class SlimeChase : MonoBehaviour
             if (playerPos.x > transform.position.x)
             {
                 moveDir = 1;
-                anim.SetInteger("WalkSpeed", moveDir);
             }
             else if (playerPos.x < transform.position.x)
             {
                 moveDir = -1;
-                anim.SetInteger("WalkSpeed", moveDir);
             }
 
             transform.parent.GetComponent<SlimeMove>().moveDir = moveDir; // 변경된 moveDir 적용
@@ -52,6 +50,7 @@ public class SlimeChase : MonoBehaviour
         if (isChasing)
         {
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            SlimeMove slimeMove = transform.parent.GetComponent<SlimeMove>();
             if (playerTransform.position.x > transform.position.x && transform.parent.GetComponent<SlimeMove>().moveDir == -1)
             {
                 Flip(); // 플레이어가 반대편으로 이동한 경우 방향을 돌림
@@ -59,6 +58,17 @@ public class SlimeChase : MonoBehaviour
             else if (playerTransform.position.x < transform.position.x && transform.parent.GetComponent<SlimeMove>().moveDir == 1)
             {
                 Flip(); // 플레이어가 반대편으로 이동한 경우 방향을 돌림
+            }
+
+            // 지형 체크
+            Vector2 frontVec = new Vector2(slimeMove.rigid.position.x + slimeMove.moveDir, slimeMove.rigid.position.y - 0.5f);
+            Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
+
+            if (rayHit.collider == null)
+            {
+                slimeMove.moveDir = 0; // 낭떠러지를 인식하면 이동을 멈춥니다.
             }
         }
     }
@@ -68,7 +78,6 @@ public class SlimeChase : MonoBehaviour
         int currentMoveDir = transform.parent.GetComponent<SlimeMove>().moveDir;
         transform.parent.GetComponent<SlimeMove>().moveDir = -currentMoveDir; // 방향을 반대로 설정
         Animator anim = transform.parent.GetComponent<Animator>();
-        anim.SetInteger("WalkSpeed", transform.parent.GetComponent<SlimeMove>().moveDir);
     }
     private void OnDrawGizmos()
     {

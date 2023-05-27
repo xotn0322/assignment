@@ -14,6 +14,7 @@ TagManager:
   - CheckPoints
   - RightWall
   - endpoint
+  - jumpingPlatform
   layers:
   - Default
   - TransparentFX

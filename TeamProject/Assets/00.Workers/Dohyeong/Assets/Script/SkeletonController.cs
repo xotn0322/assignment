@@ -5,8 +5,8 @@ using UnityEngine;
 public class SkeletonController : MonoBehaviour
 {
     Animator anim;
-    public int maxHealth = 10;         // 몬스터의 최대 체력
-    private int currentHealth;          // 몬스터의 현재 체력
+    public float maxHealth = 10f;         // 몬스터의 최대 체력
+    private float currentHealth;          // 몬스터의 현재 체력
     public Controller player;
     public SkeletonMove move;
     public Transform pos;
@@ -61,7 +61,6 @@ public class SkeletonController : MonoBehaviour
     public void AttackPlayer()
     {
         // 플레이어에게 피해를 입히는 로직 구현
-        // 예를 들어, 플레이어의 TakeDamage() 메서드를 호출하여 피해를 입힐 수 있습니다.
         Collider2D[] colliders = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
         foreach (Collider2D collider in colliders)
         {
@@ -110,13 +109,10 @@ public class SkeletonController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
-        if (player.isAttack == true)
-        {
-            currentHealth -= damageAmount;   // 몬스터 체력에서 피해량을 감소시킴
-            anim.SetTrigger("Hurt");
-        }
+        currentHealth -= damageAmount;   // 몬스터 체력에서 피해량을 감소시킴
+        anim.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
             Die();    // 몬스터의 체력이 0 이하면 죽음 처리
@@ -127,6 +123,10 @@ public class SkeletonController : MonoBehaviour
     {
         // 몬스터가 죽을 때의 동작을 구현
         anim.SetBool("Death", true);
+    }
+
+    public void removeskeleton()
+    {
         Destroy(gameObject);   // 몬스터 오브젝트 파괴
     }
 }

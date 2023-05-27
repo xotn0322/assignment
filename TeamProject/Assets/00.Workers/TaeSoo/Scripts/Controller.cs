@@ -10,11 +10,12 @@ public class Controller : MonoBehaviour
 
     #region VARIABLES
     public float WalkSpeed = 2.0f;
-    public float JumpForce = 250.0f;
+    public float JumpForce = 275.0f;
     public float charHp = 10f;
     public int charDmg = 5;
     public float speed;
     public float respawnTime = 0.5f; //리스폰 타임
+    public int jumpCount = 0;
     public bool isGround;
     public bool isJump = false;
     public bool isAttack;
@@ -22,19 +23,21 @@ public class Controller : MonoBehaviour
     public bool isDamaged = false;
     public bool isDead = false;
     public bool isKnokback = false;
+    public Vector2 jumpBlockPW = new Vector2(0, 35);
     public Vector2 boxSize;
+    public Vector2 spawnPoint;
     public Vector3 offset;
     public LayerMask isLayer;
     Color halfA = new Color(1, 1, 1, 0.5f);
     Color fullA = new Color(1, 1, 1, 1);
 
     private float attackTime;
-    private Vector2 spawnPoint;
     #endregion
 
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         rigid2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -91,9 +94,10 @@ public class Controller : MonoBehaviour
             animator.Play("Idle");
         }
         
-        if (isJump && isGround)
+        if (isJump && isGround && rigid2D.velocity.y == 0)
         {
             isJump = false;
+            jumpCount = 0;
         }
     }
 
@@ -105,11 +109,11 @@ public class Controller : MonoBehaviour
             isLayer);
 
         //점프
-        if (Input.GetKeyDown(KeyCode.Space) && isGround && !isAttack)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround && !isAttack && jumpCount == 0)
         {
             isJump = true;
+            jumpCount++;
             rigid2D.AddForce(transform.up * JumpForce);
-            //animator.SetTrigger("Jump");
             animator.SetBool("Jump", true);
         }
 
@@ -172,7 +176,7 @@ public class Controller : MonoBehaviour
             }
             else
             {
-                animator.SetTrigger("");
+                //animator.SetTrigger("");
 
                 float x = transform.position.x - pos.x;
                 if (x < 0)
@@ -214,6 +218,12 @@ public class Controller : MonoBehaviour
         {
             Damaged(1f, collision.transform.position);
         }*/
+
+        //점프발판
+        if (collision.CompareTag("jumpingPlatform") && rigid2D.velocity.y < 0)
+        {
+            rigid2D.AddForce(jumpBlockPW, ForceMode2D.Impulse);
+        }
     }
 
     //리스폰

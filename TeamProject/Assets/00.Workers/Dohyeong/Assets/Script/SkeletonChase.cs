@@ -12,7 +12,7 @@ public class SkeletonChase : MonoBehaviour
         // find player
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("쫓아온다");
+            Debug.Log("해골 쫓아온다");
             transform.parent.GetComponent<SkeletonMove>().stopMove();
             Vector3 playerPos = collision.transform.position;
             int moveDir = 0; // 추가: moveDir 변수 선언
@@ -50,13 +50,26 @@ public class SkeletonChase : MonoBehaviour
         if (isChasing)
         {
             Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            if (playerTransform.position.x > transform.position.x && transform.parent.GetComponent<SkeletonMove>().moveDir == -1)
+            SkeletonMove skeletonMove = transform.parent.GetComponent<SkeletonMove>();
+            if (playerTransform.position.x > transform.position.x && skeletonMove.moveDir == -1)
             {
                 Flip(); // 플레이어가 반대편으로 이동한 경우 방향을 돌림
             }
-            else if (playerTransform.position.x < transform.position.x && transform.parent.GetComponent<SkeletonMove>().moveDir == 1)
+            else if (playerTransform.position.x < transform.position.x && skeletonMove.moveDir == 1)
             {
                 Flip(); // 플레이어가 반대편으로 이동한 경우 방향을 돌림
+            }
+
+            // 지형 체크
+            Vector2 frontVec = new Vector2(skeletonMove.rigid.position.x + skeletonMove.moveDir, skeletonMove.rigid.position.y - 0.5f);
+            Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
+
+            if (rayHit.collider == null)
+            {
+                skeletonMove.moveDir = 0; // 낭떠러지를 인식하면 이동을 멈춥니다.
+                skeletonMove.anim.SetInteger("WalkSpeed", skeletonMove.moveDir);
             }
         }
     }
@@ -68,6 +81,7 @@ public class SkeletonChase : MonoBehaviour
         Animator anim = transform.parent.GetComponent<Animator>();
         anim.SetInteger("WalkSpeed", transform.parent.GetComponent<SkeletonMove>().moveDir);
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

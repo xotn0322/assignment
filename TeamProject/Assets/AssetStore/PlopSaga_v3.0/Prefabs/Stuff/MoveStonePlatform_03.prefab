@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2848550756717334454}
   - component: {fileID: 9045379870479634114}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: GroundGrass_Caves_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5857536307069568317}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5857536307892123607}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5857536308380152116}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: MoveStonePlatform_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8854160761998649161}
   - component: {fileID: 1480335851908155920}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: GroundGrass_Caves_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 1994293541311930501}
   - component: {fileID: 7671555045417257159}
   - component: {fileID: 7671555045417257156}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: MoveStone_Mountain_03 1
   m_TagString: MovePlatform
   m_Icon: {fileID: 0}

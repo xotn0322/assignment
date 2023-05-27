@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkeletonMove : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    Animator anim;
+    public Rigidbody2D rigid;
+    public Animator anim;
     SpriteRenderer spriteRenderer;
     public int moveDir;
     public float nextThinkTime;

@@ -6,6 +6,7 @@ public class CheckPoint : MonoBehaviour {
 
     public GameObject checkPointIcon;
     public GameObject checkPointEffect;
+    public AudioClip Save;
 
      
     public string collideTag = "Player";
@@ -31,6 +32,8 @@ public class CheckPoint : MonoBehaviour {
             checkPointEffect.SetActive(true);
             checkPointIcon.SetActive(true);
 
+            //사운드
+            Sound.instance.SFXPlay("Save", Save);
         }
     }
 }

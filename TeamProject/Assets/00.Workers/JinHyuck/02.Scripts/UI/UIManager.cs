@@ -22,10 +22,10 @@ public class UIManager : MonoBehaviour
 	void Update()
 	{
 		float curHp = player.charHp;
-		float fillValue = curHp / 10;
+		float fillValue = curHp / 100;
 		Health_Filler.fillAmount = fillValue;
 
 		float textHp = curHp * 10;
-		Health_Text.text = textHp.ToString("F0") + "/" + 100f;
+		Health_Text.text = textHp.ToString("F0") + "/" + 1000f;
 	}
 }

@@ -25,7 +25,6 @@ public class MovingPlatform : MonoBehaviour {
 	void Update () {
 
         MoveObj();
-
 	}
 
     void MoveObj()
@@ -34,7 +33,7 @@ public class MovingPlatform : MonoBehaviour {
         platform.transform.position = Vector2.MoveTowards(platform.transform.position, currentPoint.position, Time.deltaTime * moveSpeed);
         if (platform.transform.position == currentPoint.position)
         {
-            pointSelection++;
+            pointSelection++; //0일때 왼쪽, 1일때 오른쪽
             if (pointSelection == points.Length)
             {
                 pointSelection = 0;

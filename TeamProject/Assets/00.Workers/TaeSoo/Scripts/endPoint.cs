@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class endPoint : MonoBehaviour
 {
+    //체크포인트 이펙트 및 아이콘 애니메이션
     public GameObject checkPointIcon;
     public GameObject checkPointEffect;
+
     public Controller pController;
+    public AudioClip turnOn; //활성화 사운드
     public string collideTag = "Player";
     public int stage;
 
@@ -28,6 +31,7 @@ public class endPoint : MonoBehaviour
         stage = GameObject.Find("gameManeger").GetComponent<gameManeger>().stageNumber;
     }
 
+    //플레이어가 목적지에 도착했을 때
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == collideTag)
@@ -37,6 +41,9 @@ public class endPoint : MonoBehaviour
             //이펙트
             checkPointEffect.SetActive(true);
             checkPointIcon.SetActive(true);
+
+            //사운드
+            Sound.instance.SFXPlay("End", turnOn);
 
             Invoke("goStage", 3f);
         }
@@ -64,7 +71,7 @@ public class endPoint : MonoBehaviour
                 break;
 
             case 5:
-                LoadSceneManager.LoadScene("stage 6");
+                LoadSceneManager.LoadScene("Ending");
                 break;
         }
     }

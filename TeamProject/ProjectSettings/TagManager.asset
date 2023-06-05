@@ -15,6 +15,13 @@ TagManager:
   - RightWall
   - endpoint
   - jumpingPlatform
+  - MovePlatform2
+  - Poison
+  - Skeleton
+  - Mushroom
+  - Slime
+  - Bat
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -23,7 +30,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Player
   - Enemy
   - 
   - 

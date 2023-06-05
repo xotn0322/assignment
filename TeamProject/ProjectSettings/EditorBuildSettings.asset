@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00.Workers/JinHyuck/01.Scenes/LoadScene.unity
-    guid: c12712d4445b7364e86c7fb66d1bab8c
+    path: Assets/00.Workers/JinHyuck/01.Scenes/Title.unity
+    guid: d481d151b44f96e4f87bbc4c6153f749
   - enabled: 1
     path: Assets/00.Workers/TaeSoo/Scenes/stage 1.unity
     guid: 4cec4bacc1af6254b924193427c5db58
@@ -24,12 +24,12 @@ EditorBuildSettings:
     path: Assets/00.Workers/TaeSoo/Scenes/stage 5.unity
     guid: 44263613620aa4f4ba734b20a92c9a36
   - enabled: 1
-    path: Assets/00.Workers/TaeSoo/Scenes/stage 6.unity
-    guid: 52ba082cebba7004ca8bb8c1269244a1
-  - enabled: 0
-    path: Assets/00.Workers/JinHyuck/01.Scenes/Title.unity
-    guid: d481d151b44f96e4f87bbc4c6153f749
-  - enabled: 0
+    path: Assets/00.Workers/JinHyuck/01.Scenes/LoadScene.unity
+    guid: c12712d4445b7364e86c7fb66d1bab8c
+  - enabled: 1
     path: Assets/00.Workers/JinHyuck/01.Scenes/TestMain.unity
     guid: 2781edd0ab573bb439205851353f0b89
+  - enabled: 1
+    path: Assets/00.Workers/JinHyuck/01.Scenes/Ending.unity
+    guid: b704a87f9ef1f3749b7b254815b63ef2
   m_configObjects: {}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7071754786267352750}
   - component: {fileID: 7071754786267352737}
   - component: {fileID: 7071754786267352736}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: skeletonAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 5
+  damage: 13
 --- !u!1 &7071754786420660443
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,10 +87,10 @@ GameObject:
   - component: {fileID: 7071754786420660432}
   - component: {fileID: 7071754786420660435}
   - component: {fileID: 7071754786420660437}
-  - component: {fileID: 6397139245390325120}
-  m_Layer: 8
+  - component: {fileID: 7071754786420660434}
+  m_Layer: 7
   m_Name: skeleton
-  m_TagString: Enemy
+  m_TagString: Skeleton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,16 +244,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da899223b6b507f479ee5ade70544ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 30
   player: {fileID: 0}
-  move: {fileID: 6397139245390325120}
+  move: {fileID: 0}
   pos: {fileID: 7071754786267352750}
   boxSize: {x: 0.6, y: 0.87}
   box: {fileID: 7071754786267352737}
   isAttack: 0
+  isKnockback: 0
+  isDamaged: 0
   attackCooldown: 2
   spriteRenderer: {fileID: 0}
---- !u!114 &6397139245390325120
+--- !u!114 &7071754786420660434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,13 +264,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7071754786420660443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485029be96f3e83468cf1f77efc34805, type: 3}
+  m_Script: {fileID: 11500000, guid: 04c8616d4133d2945a305ae45fbc2212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  anim: {fileID: 0}
   moveDir: 0
   nextThinkTime: 0
-  controller: {fileID: 7071754786420660437}
-  skeletonAttack: {fileID: 7071754786267352751}
+  controller: {fileID: 0}
+  skeletonAttack: {fileID: 0}
 --- !u!1 &7071754787695150341
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +284,7 @@ GameObject:
   - component: {fileID: 7071754787695150340}
   - component: {fileID: 7071754787695147769}
   - component: {fileID: 7071754787695150342}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: skeletonChaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
